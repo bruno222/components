@@ -9,13 +9,15 @@
 
     .mat-mdc-slider {
       &.mat-primary {
-        // TODO: disabled until we implement the new MDC slider.
-        // @include mdc-slider-color-accessible(primary, $mat-theme-styles-query);
+        @include track-and-thumb-color(primary);
+      }
+
+      &.mat-accent {
+        @include track-and-thumb-color(secondary);
       }
 
       &.mat-warn {
-        // TODO: disabled until we implement the new MDC slider.
-        // @include mdc-slider-color-accessible(error, $mat-theme-styles-query);
+        @include track-and-thumb-color(error);
       }
     }
   }
@@ -47,5 +49,29 @@
       @include mat-mdc-slider-typography($typography);
     }
   }
+}
+
+@mixin track-and-thumb-color($color) {
+  @include thumb-color(
+    $color-or-map: (
+      default: $color,
+      disabled: on-surface,
+    ),
+    $query: $mat-theme-styles-query
+  );
+  @include track-active-color(
+    $color-or-map: (
+      default: $color,
+      disabled: on-surface,
+    ),
+    $query: $mat-theme-styles-query
+  );
+  @include track-inactive-color(
+    $color-or-map: (
+      default: $color,
+      disabled: on-surface,
+    ),
+    $query: $mat-theme-styles-query
+  );
 }
 
