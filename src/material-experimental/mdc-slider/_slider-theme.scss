@@ -8,6 +8,14 @@
     @include without-ripple($query: $mat-theme-styles-query);
 
     .mat-mdc-slider {
+      &.mat-primary, &.mat-accent, &.mat-warn {
+        @include value-indicator-color(
+          $color: #000,
+          $opacity: 0.6,
+          $query: $mat-theme-styles-query
+        );
+      }
+
       &.mat-primary {
         @include track-and-thumb-color(primary);
       }
@@ -74,4 +82,3 @@
     $query: $mat-theme-styles-query
   );
 }
-
